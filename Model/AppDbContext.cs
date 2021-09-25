@@ -9,5 +9,6 @@ namespace UserRegWithAngularInNetCoreWebApi.Model
         {
 
         }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }
