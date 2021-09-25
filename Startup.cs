@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -28,6 +29,10 @@ namespace UserRegWithAngularInNetCoreWebApi
             //Add DbContext and connectionString as a service
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
                Configuration.GetConnectionString("AppDbContextConnection")));
+            //Add AddDefaultIdentity to services
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
+            //.AddDefaultTokenProviders();
 
         }
 
