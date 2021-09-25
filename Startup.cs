@@ -48,8 +48,14 @@ namespace UserRegWithAngularInNetCoreWebApi
 
             app.UseRouting();
 
+            //Add UseAuthentication
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
+            //Add MVC to IApplicationBuilder
+            //app.UseMvc();
+            // app.UseMvcWithDefaultRoute();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
