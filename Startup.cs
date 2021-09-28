@@ -33,7 +33,18 @@ namespace UserRegWithAngularInNetCoreWebApi
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
             //.AddDefaultTokenProviders();
+            //Configure Data validation for user registration
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 4;
+            });
+            services.Configure<IdentityUser>(options =>
+            {
 
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
